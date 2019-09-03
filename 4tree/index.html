@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>树形结构展示图</title>
+		<script type="text/javascript" src="jquery-3.4.1.min.js" ></script>
+		<script type="text/javascript" src="echarts.min.js"></script>
+	</head>
+	<body>
+		<div id="container" style="height: 900px;border: 2px solid #000;"></div>
+	</body>
+</html>
+<script>
+	var dom = document.getElementById("container");
+	var myChart = echarts.init(dom);
+	var app = {};
+	option = null;
+	
+	myChart.showLoading();
+	$.get('./flare.json', function (data) {
+//		console.log(data)
+    myChart.hideLoading();
+
+    myChart.setOption(option = {
+    	title:{
+    		show:true,
+    		text:'树形图展示',
+    		textStyle:{
+    			color:'red',
+    			
+    		},
+    		
+    	},
+        tooltip: {
+            trigger: 'item',
+            triggerOn: 'mousemove'
+        },
+        series:[
+            {
+                type: 'tree',
+
+                data: [data],
+
+                left: '2%',
+                right: '2%',
+                top: '8%',
+                bottom: '20%',
+
+//              symbol: 'rect',
+ 				symbol: 'emptyCircle',
+			 	symbolSize:(value, params) => {
+//			 		console.log(params.data)
+			 		var data = params.data
+			 		if(data.name == 'undefined'){
+			 			params.symbolSize = []
+			 		}else if(typeof data.name === 'object'){
+			 			params.symbolSize = [data.name.length * 100,50]
+			 		}else if(typeof  data.name === 'string'){
+			 			params.symbolSize = [100,50]
+			 		}
+		            return params.symbolSize
+			    },                
+			    symbolRotate: 0, //节点旋转角度
+                symbolOffset:[0,0],
+
+                orient: 'TB',
+                roam:true,
+
+                expandAndCollapse: true,
+                initialTreeDepth:1,
+
+                label: {
+                    normal: {
+                        position: 'inside',　//节点文字样式控制,节点文字 所处图标的位置
+                        rotate: 0,
+                        verticalAlign: 'middle',
+                        align: 'center',
+                        fontSize: 20,
+                        color:'#000', //每个节点上字的颜色
+                       
+                    },
+                     
+                    
+                },
+
+                leaves: {
+                    label: {
+                        normal: {
+                            position: 'inside',　//最低端的叶子节点文字样式控制
+                            rotate: 0,
+                            verticalAlign: 'middle',
+                            align: 'center',
+                            distance:10,
+                            fontSize:16
+                        }
+                    },
+                    itemStyle:{
+	                	color:'#009688',  //有子节点的状态－背景+边框
+	                	borderColor:'#009688',
+	                	borderWidth:1,
+	                	borderType: 'solid',
+	                	
+	                },
+//	                emphasis:{
+//	                	
+//	                },
+                },
+                itemStyle:{
+	                	color:'#009688',  //带子节点的父节点展开效果－背景+边框
+	                	borderColor:'#009688',
+	                	borderWidth:1,
+	                	borderType: 'solid',
+	                	
+	            },
+                
+                lineStyle:{
+                	color:'#009688', //树边线
+                	width:1,
+				 	curveness:0.6,
+                },
+                
+
+                animationDurationUpdate: function (idx) {
+				    // 越往后的数据延迟越大
+				    return idx * 10;
+				},
+				 emphasis:{
+				 	itemStyle:{
+				 		color:'#04B431', //鼠标滑过节点效果
+				 		borderColor:'#FFBF00',
+				 		borderWidth:0,
+				 		borderType:'solid'
+				 	},
+				 	lineStyle:{
+				 		color:'#F7FE2E',
+				 		width:1,
+				 		curveness:0.5,
+				 	},
+				 	label:{
+				 		show:false, //节点文字背景
+				 		
+				 	}
+				 },
+            }
+        ],
+       
+    });
+    
+    
+});
+
+
+
+</script>

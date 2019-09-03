@@ -1,0 +1,126 @@
+{
+ "name": ["作业1","作业2"],
+ "value": 1234,
+ "label": {
+        "normal": {
+            "position": "inside",
+            "rotate": "0",
+            "verticalAlign": "middle",
+            "align": "center",
+            "fontSize": "20"
+        }
+    },
+ "children": [
+  {
+   "name": ["作业3","作业4","作业5"],
+	"value": 2345,
+  "children": [
+    {
+     "name": "作业6",
+     "value": 3534,
+     "children": [
+      {"name": "作业2-01", "value": 3534},
+      {"name": "作业2-02", "value": 5731},
+      {"name": "作业2-03", "value": 7840},
+      {"name": "作业2-04", "value": 5914},
+      {"name": "作业2-05", "value": 3416}
+     ]
+    },
+    {
+     "name": "作业7",
+     "value": 3534,
+     "children": [
+      {"name": "AspectRatioBanker", "value": 7074}
+     ]
+    }
+   ]
+  },
+  {
+   "name": "作业8",
+   "children": [
+    {"name": "作业2-01", "value": 1759},
+    {"name": "作业2-02", "value": 2165},
+    {"name": "作业2-03", "value": 586},
+    {"name": "作业2-04", "value": 3331},
+    {"name": "作业2-05", "value": 772},
+    {"name": "作业2-06", "value": 3322}
+   ]
+  },
+  {
+   "name": "作业9",
+   "children": [
+    {
+     "name": "作业3-01","value":58965
+    },
+    {"name": "作业3-02", "value": 2313},
+    {"name": "作业3-03", "value": 2313},
+    {
+     "name": "作业3-04",
+     "children": [
+      {
+       "name": "distortion",
+       "children": [
+        {"name": "BifocalDistortion", "value": 4461},
+        {"name": "Distortion", "value": 6314},
+        {"name": "FisheyeDistortion", "value": 3444}
+       ]
+      },
+      {
+       "name": "encoder",
+       "children": [
+        {"name": "ColorEncoder", "value": 3179},
+        {"name": "Encoder", "value": 4060},
+        {"name": "PropertyEncoder", "value": 4138},
+        {"name": "ShapeEncoder", "value": 1690},
+        {"name": "SizeEncoder", "value": 1830}
+       ]
+      },
+      {
+       "name": "filter",
+       "children": [
+        {"name": "FisheyeTreeFilter", "value": 5219},
+        {"name": "GraphDistanceFilter", "value": 3165},
+        {"name": "VisibilityFilter", "value": 3509}
+       ]
+      },
+      {"name": "IOperator", "value": 1286},
+      {
+       "name": "label",
+       "children": [
+        {"name": "Labeler", "value": 9956},
+        {"name": "RadialLabeler", "value": 3899},
+        {"name": "StackedAreaLabeler", "value": 3202}
+       ]
+      },
+      {
+       "name": "layout",
+       "children": [
+        {"name": "AxisLayout", "value": 6725},
+        {"name": "BundledEdgeRouter", "value": 3727},
+        {"name": "CircleLayout", "value": 9317},
+        {"name": "CirclePackingLayout", "value": 12003},
+        {"name": "DendrogramLayout", "value": 4853},
+        {"name": "ForceDirectedLayout", "value": 8411},
+        {"name": "IcicleTreeLayout", "value": 4864},
+        {"name": "IndentedTreeLayout", "value": 3174},
+        {"name": "Layout", "value": 7881},
+        {"name": "NodeLinkTreeLayout", "value": 12870},
+        {"name": "PieLayout", "value": 2728},
+        {"name": "RadialTreeLayout", "value": 12348},
+        {"name": "RandomLayout", "value": 870},
+        {"name": "StackedAreaLayout", "value": 9121},
+        {"name": "TreeMapLayout", "value": 9191}
+       ]
+      },
+      {"name": "Operator", "value": 2490},
+      {"name": "OperatorList", "value": 5248},
+      {"name": "OperatorSequence", "value": 4190},
+      {"name": "OperatorSwitch", "value": 2581},
+      {"name": "SortOperator", "value": 2023}
+     ]
+    },
+    {"name": "作业3-05", "value": 16540}
+   ]
+  }
+ ]
+}

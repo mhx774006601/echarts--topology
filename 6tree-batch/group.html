@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+   <head>
+       <meta charset="utf-8">
+       <title>作业节点关系展示图</title>
+         <script type="text/javascript" src="jquery-3.4.1.min.js" ></script>
+       	<script type="text/javascript" src="echarts.min.js"></script>
+       	<script type="text/ecmascript" src="layui/layui.all.js"></script>
+       	<link href="layui/css/layui.css" />
+      
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+      
+       	<script type="text/javascript">
+			var dom = document.getElementById("container");
+			var myChart = echarts.init(dom);
+			var app = {};
+			option = null;
+			myChart.showLoading();
+			
+			$.get('data_group.json', function (data) {
+				var result = data.datas.data;
+				var links = data.datas.links
+//				console.log(result)
+				 myChart.hideLoading();
+				myChart.setOption(option = {
+//				    title: {
+//				        text: 'Graph 简单示例'
+//				    },
+				    tooltip: {},
+				    animationDurationUpdate: 1500,
+				    animationEasingUpdate: 'quinticInOut',
+				    series : [
+				        {
+				            type: 'graph',
+				            layout: 'none',
+				            symbolSize:[100,30],
+				            roam: true,
+				            focusNodeAdjacency:true,
+				            label: {
+				                normal: {
+				                    show: true
+				                }
+				            },
+				            edgeSymbol: ['circle', 'arrow'],
+				            edgeSymbolSize: [4, 10],
+				            edgeLabel: {
+				                normal: {
+				                    textStyle: {
+				                        fontSize: 20
+				                    }
+				                }
+				            },
+				            //节点背景色
+				            itemStyle:{
+				                color:'#009688'
+				            },
+				            data:result,   //接口取值
+				            links:links,  //接口取值
+				            lineStyle: {
+				                normal: {
+				                    opacity: 0.9,
+				                    width: 2,
+				                    curveness: 0
+				                }
+				            }
+				        }
+				    ]
+				});
+			});
+			if (option && typeof option === "object") {
+			    myChart.setOption(option, true);
+			}
+		
+		//使用layui实现点击节点弹窗
+		layui.use(['layer',], function(){
+			  var layer = layui.layer
+			//节点点击事件
+			 myChart.on("click", jobrelation);
+			 function jobrelation(){
+			 	console.log('jobrelation');
+			 	layer.open({
+			 		type:2,
+			 		title:'作业',
+			 		maxmin: true,
+			 		area:['1000px','500px'],
+			 		content: 'job-simple.html'
+			        ,btn: ['关闭'] 
+			        ,yes: function(){
+			          layer.closeAll(); 
+			        }
+			        
+			 	})
+			 }
+  
+  
+  
+  		});
+  		
+  		//根据窗口的大小变动 图表
+			window.onresize = function(){
+				myChart.resize();
+			}
+			
+       </script>
+   </body>
+</html>
+ 

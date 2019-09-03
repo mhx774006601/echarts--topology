@@ -1,0 +1,39 @@
+{
+	"links": [
+        {
+            "source": "节点1",
+            "target": "节点2"
+        }, 
+        {
+            "source": "节点1",
+            "target": "节点3"
+        }, {
+            "source": "节点2",
+            "target": "节点3"
+        }, {
+            "source": "节点2",
+            "target": "节点4"
+        }, {
+            "source": "节点1",
+            "target": "节点4"
+        }, {
+            "source": "节点1",
+            "target": "节点5"
+        }, {
+            "source": "节点1",
+            "target": "节点6"
+        }, {
+            "source": "节点1",
+            "target": "节点7"
+        }, {
+            "source": "节点6",
+            "target": "节点5"
+        }, {
+            "source": "节点8",
+            "target": "节点4"
+        }, {
+            "source": "节点9",
+            "target": "节点5"
+        }
+    ]
+ }
