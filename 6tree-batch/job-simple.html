@@ -17,14 +17,23 @@
 			option = null;
 			myChart.showLoading();
 			
+			//计算字符串的长度
+			getBLen = function(str) {
+			  if (str == null) return 0;
+			  if (typeof str != "string"){
+			    str += "";
+			  }
+			  return str.replace(/[^\x00-\xff]/g,"01").length;
+			}
+			
 			$.get('data.json', function (data) {
 				var result = data.datas.data;
 				var links = data.datas.links
 				 myChart.hideLoading();
 				myChart.setOption(option = {
-//				    title: {
-//				        text: 'Graph 简单示例'
-//				    },
+				    title: {
+				        text: 'Graph 简单示例'
+				    },
 				    tooltip: {},
 				    animationDurationUpdate: 1500,
 				    animationEasingUpdate: 'quinticInOut',
@@ -32,7 +41,11 @@
 				        {
 				            type: 'graph',
 				            layout: 'none',
-				            symbolSize:[100,30],
+				            symbolSize:(value, params) => {
+							 		var data = params.data
+							 		params.symbolSize = [getBLen(data.name) * 10,30]
+						            return params.symbolSize
+							    },
 				            roam: true,
 				            focusNodeAdjacency:true,
 				            label: {
