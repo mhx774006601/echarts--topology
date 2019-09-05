@@ -30,8 +30,8 @@
 				var result = data.datas.data;
 				var links = data.datas.links
 				
-				      //设置同一个层级的节点，在数量很多的时候，它们之间距离控制
-				var _arr = [];
+			//设置同一个层级的节点，在数量很多的时候，它们之间距离控制
+                		var _arr = [];
 				for(var i=0;i<result.length;i++){
 					_arr.push(result[i].y);
 				}
@@ -40,27 +40,20 @@
 				for (var i = 0; i < _arr.length;) {  
 				    var count = 0;  
 				    for (var j = i; j < _arr.length; j++) {  
-					if (_arr[i] == _arr[j]) {  
-					    count++;  
-					}  
+				        if (_arr[i] == _arr[j]) {  
+				            count++;  
+				        }  
 				    }  
-				//拿到节点个数
 				    _res.push([_arr[i], count]);  
 				    i += count;  
 				    if(count>5 && count < 11){
-					$('#container').css({'width':'2000px'});
-					  //根据窗口的大小变动 图表
-					  myChart.resize();
+				    	$('#container').css({'width':'2000px'});
 				    }else if(count > 10 && count < 21){
 					$('#container').css({'width':'5000px'});
-					  //根据窗口的大小变动 图表
-					  myChart.resize();
 				    }else if(count > 21){
 					$('#container').css({'width':'8000px'});
-					//根据窗口的大小变动 图表
-					myChart.resize();
 				    }
-				}
+				} 
 				
 				 myChart.hideLoading();
 				myChart.setOption(option = {
