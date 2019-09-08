@@ -62,6 +62,30 @@
                        			     myChart.resize();
 				    }
 				} 
+			 //通过数组去重，拿到节点层级,根据节点层级的数量控制页面高度
+				function unique(arr) {
+				    if (!Array.isArray(arr)) {
+					console.log('type error!')
+					return
+				    }
+				    var array = [];
+				    for (var i = 0; i < arr.length; i++) {
+					if (array .indexOf(arr[i]) === -1) {
+					    array .push(arr[i])
+					}
+				    }
+				    return array;
+				}
+				var s = unique(_arr).length;
+				if(s > 5 && s < 11){
+				    $('#container').css({'height':'1500px'});
+				     //根据窗口的大小变动 图表
+				    myChart.resize();
+				}else if(s>10){
+				    $('#container').css({'height':'2000px'});
+				     //根据窗口的大小变动 图表
+				    myChart.resize();
+				}
 
 				 myChart.hideLoading();
 				myChart.setOption(option = {
